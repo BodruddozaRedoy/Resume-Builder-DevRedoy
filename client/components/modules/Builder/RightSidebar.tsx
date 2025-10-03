@@ -1,4 +1,5 @@
 "use client"
+import { DatePicker } from '@/components/common/DatePicker'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -137,22 +138,54 @@ const Skills = () => {
     );
 };
 
+const EmploymentHistory = () => {
+    return (
+        <div className=''>
+            <h1 className='font-bold text-2xl mb-3'>Employment History</h1>
+            <p className='mb-3 text-muted-foreground'>Show employers your past experience and what you have accomplished. Include simple, clear examples and use impactful words to demonstrate your skills.</p>
+            <div className='grid grid-cols-2 gap-5'>
+                <div>
+                    <Label>Job Title</Label>
+                    <Input type='text' placeholder='Type here...' className='mt-2' />
+                </div>
+                <div>
+                    <Label>Company Name</Label>
+                    <Input type='text' placeholder='Type here...' className='mt-2' />
+                </div>
+                <div className='flex items-center gap-3'>
+                    <DatePicker label='Start Date' />
+                    <DatePicker label='End Date' />
+                </div>
+                <div className='flex items-center gap-2'>
+                    <div>
+                        <Label>Country</Label>
+                        <Input type='text' placeholder='Type here...' className='mt-2' />
+                    </div>
+                    <div>
+                        <Label>Company Link</Label>
+                        <Input type='text' placeholder='Type here...' className='mt-2' />
+                    </div>
+                </div>
+                <div className='col-span-2'>
+                    <Label>Description</Label>
+                    <Textarea placeholder='Type here...' className='mt-2' />
+                </div>
+
+
+            </div>
+        </div>
+    )
+}
+
 export default function RightSidebar() {
     const { active, setActive } = useTabSwitch()
     return (
         <div className='bg-background shadow-lg rounded-lg p-5'>
-            {
-                active === "personal-details" && <PersonalDetails />
-            }
-            {
-                active === "contact-information" && <ContactInformation />
-            }
-            {
-                active === "professional-summary" && <ProfessionalSummary />
-            }
-            {
-                active === "skills" && <Skills />
-            }
+            {active === "personal-details" && <PersonalDetails />}
+            {active === "contact-information" && <ContactInformation />}
+            {active === "professional-summary" && <ProfessionalSummary />}
+            {active === "skills" && <Skills />}
+            {active === "employment-history" && <EmploymentHistory />}
         </div>
     )
 }
