@@ -170,9 +170,42 @@ const EmploymentHistory = () => {
                     <Label>Description</Label>
                     <Textarea placeholder='Type here...' className='mt-2' />
                 </div>
-
-
             </div>
+            <Button className='mt-3 w-full'><PlusCircle /> Add Experience</Button>
+        </div>
+    )
+}
+
+const Education = () => {
+    return (
+        <div className=''>
+            <h1 className='font-bold text-2xl mb-3'>Education</h1>
+            <p className='mb-3 text-muted-foreground'>Add the name of your school, where it is located, what degree you obtained, your field of study, and your graduation year.</p>
+            <div className='grid grid-cols-2 gap-5'>
+                <div>
+                    <Label>Degree Name</Label>
+                    <Input type='text' placeholder='Type here...' className='mt-2' />
+                </div>
+                <div>
+                    <Label>Institute Name</Label>
+                    <Input type='text' placeholder='Type here...' className='mt-2' />
+                </div>
+                <div className='flex items-center gap-3'>
+                    <DatePicker label='Start Date' />
+                    <DatePicker label='End Date' />
+                </div>
+                <div className=''>
+                    <div>
+                        <Label>Location</Label>
+                        <Input type='text' placeholder='Type here...' className='mt-2' />
+                    </div>
+                </div>
+                <div className='col-span-2'>
+                    <Label>Description</Label>
+                    <Textarea placeholder='Type here...' className='mt-2' />
+                </div>
+            </div>
+            <Button className='mt-3 w-full'><PlusCircle /> Add Education</Button>
         </div>
     )
 }
@@ -186,6 +219,7 @@ export default function RightSidebar() {
             {active === "professional-summary" && <ProfessionalSummary />}
             {active === "skills" && <Skills />}
             {active === "employment-history" && <EmploymentHistory />}
+            {active === "education" && <Education />}
         </div>
     )
 }
