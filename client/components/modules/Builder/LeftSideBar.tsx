@@ -54,7 +54,7 @@ export default function LeftSideBar() {
     const { active, setActive } = useTabSwitch();
 
     return (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 bg-background shadow-lg p-5 rounded-lg">
             {tabs.map((tab) => (
                 <Button
                     key={tab.id}
