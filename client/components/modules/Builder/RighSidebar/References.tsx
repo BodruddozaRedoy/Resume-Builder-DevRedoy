@@ -2,16 +2,10 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ReferenceItem } from "@/types/resume.types";
 import { Pencil, PlusCircle, X } from "lucide-react";
 import { useState } from "react";
 
-export type ReferenceItem = {
-  id: number;
-  referentName: string;
-  referentCompany: string;
-  referentEmail: string;
-  referentPhone: string;
-};
 
 export const References = () => {
   const [references, setReferences] = useState<ReferenceItem[]>([]);

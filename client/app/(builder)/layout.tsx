@@ -15,7 +15,7 @@ export default function BuilderLayout({ children }: { children: React.ReactNode 
                 <BuilderNavbar />
             </nav>
             <div className='flex flex-1 overflow-hidden'>
-                <aside className='w-[30%] p-2 overflow-y-auto'>
+                <aside className='w-[35%] p-2 overflow-y-auto'>
                     <LeftSideBar />
                 </aside>
                 <main className='h-full w-full  p-5 overflow-y-auto'>

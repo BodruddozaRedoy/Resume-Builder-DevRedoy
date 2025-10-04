@@ -10,6 +10,9 @@ import { Education } from './Education'
 import { Internship } from './Internship'
 import { Courses } from './Courses'
 import { References } from './References'
+import { Languages } from './Languages'
+import { Hobbies } from './Hobbies'
+import { Links } from './Links'
 
 export default function RightSidebar() {
     const { active, setActive } = useTabSwitch()
@@ -24,6 +27,9 @@ export default function RightSidebar() {
             {active === "internship" && <Internship />}
             {active === "courses" && <Courses />}
             {active === "references" && <References />}
+            {active === "languages" && <Languages />}
+            {active === "hobbies" && <Hobbies />}
+            {active === "links" && <Links />}
         </div>
     )
 }
