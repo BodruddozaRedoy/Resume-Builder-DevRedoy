@@ -47,6 +47,18 @@ const tabs = [
         slug: "education",
         icon: GraduationCap,
     },
+    {
+        id: 7,
+        title: "Internship",
+        slug: "internship",
+        icon: GraduationCap,
+    },
+    {
+        id: 8,
+        title: "Courses",
+        slug: "courses",
+        icon: GraduationCap,
+    },
 ];
 
 

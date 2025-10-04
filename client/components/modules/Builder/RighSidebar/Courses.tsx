@@ -1,0 +1,161 @@
+"use client"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { CourseItem } from "@/types/resume.types";
+import { Pencil, PlusCircle, X } from "lucide-react";
+import { useState } from "react";
+
+export const Courses = () => {
+    const [course, setCourse] = useState<CourseItem[]>([]);
+    const [form, setForm] = useState<CourseItem>({
+        id: Date.now(),
+        institute: "",
+        startDate: "",
+        endDate: "",
+        courseTitle: ""
+    });
+
+    const [editId, setEditId] = useState<number | null>(null);
+
+    // 🔹 Handle input changes
+    const handleChange = (field: keyof CourseItem, value: string) => {
+        setForm((prev) => ({ ...prev, [field]: value }));
+    };
+
+    // 🔹 Add new entry
+    const handleAdd = () => {
+        if (!form.institute) return;
+
+        setCourse((prev) => [...prev, { ...form, id: Date.now() }]);
+        resetForm();
+    };
+
+    // 🔹 Start editing
+    const handleEdit = (item: CourseItem) => {
+        setForm(item);
+        setEditId(item.id);
+    };
+
+    // 🔹 Save update
+    const handleUpdate = () => {
+        setCourse((prev) =>
+            prev.map((item) => (item.id === editId ? { ...form, id: editId } : item))
+        );
+        resetForm();
+        setEditId(null);
+    };
+
+    // 🔹 Delete entry
+    const handleDelete = (id: number) => {
+        setCourse((prev) => prev.filter((item) => item.id !== id));
+    };
+
+    // 🔹 Reset form
+    const resetForm = () => {
+        setForm({
+            id: Date.now(),
+            institute: "",
+            startDate: "",
+            endDate: "",
+            courseTitle: ""
+        });
+    };
+
+    return (
+        <div>
+            <h1 className="font-bold text-2xl mb-3">Courses</h1>
+            <p className="mb-3 text-muted-foreground">
+                Add the name of your school, where it is located, what degree you obtained,
+                your field of study, and your graduation year.
+            </p>
+
+            {/* Form */}
+            <div className="grid grid-cols-2 gap-5">
+                <div>
+                    <Label>Institute Name</Label>
+                    <Input
+                        value={form.institute}
+                        onChange={(e) => handleChange("institute", e.target.value)}
+                        type="text"
+                        placeholder="Type here..."
+                        className="mt-2"
+                    />
+                </div>
+                <div>
+                    <Label>Course Title</Label>
+                    <Input
+                        value={form.courseTitle}
+                        onChange={(e) => handleChange("courseTitle", e.target.value)}
+                        type="text"
+                        placeholder="Type here..."
+                        className="mt-2"
+                    />
+                </div>
+                <div className="flex-1">
+                    <Label>Start Date</Label>
+                    <Input
+                        type="date"
+                        value={form.startDate}
+                        onChange={(e) => handleChange("startDate", e.target.value)}
+                    />
+                </div>
+                <div className="flex-1">
+                    <Label>End Date</Label>
+                    <Input
+                        type="date"
+                        value={form.endDate}
+                        onChange={(e) => handleChange("endDate", e.target.value)}
+                    />
+                </div>
+
+            </div>
+
+            {editId ? (
+                <Button onClick={handleUpdate} className="mt-3 w-full">
+                    <Pencil /> Update Course
+                </Button>
+            ) : (
+                <Button onClick={handleAdd} className="mt-3 w-full">
+                    <PlusCircle /> Add Course
+                </Button>
+            )}
+
+            {/* List */}
+            <div className="mt-6 space-y-3">
+                {course.map((item: any) => (
+                    <div
+                        key={item.id}
+                        className="p-3 border rounded flex justify-between items-start"
+                    >
+                        <div>
+                            <p className="font-semibold">{item.degree}</p>
+                            <p className="text-sm text-muted-foreground">{item.institute}</p>
+                            <p className="text-xs text-gray-500">
+                                {item.startDate} - {item.endDate} | {item.location}
+                            </p>
+                            <p className="text-sm">{item.description}</p>
+                        </div>
+                        <div className="flex gap-2">
+                            <Button
+                                variant="outline"
+                                size="icon"
+                                onClick={() => handleEdit(item)}
+                            >
+                                <Pencil size={16} />
+                            </Button>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={() => handleDelete(item.id)}
+                            >
+                                <X size={16} />
+                            </Button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
