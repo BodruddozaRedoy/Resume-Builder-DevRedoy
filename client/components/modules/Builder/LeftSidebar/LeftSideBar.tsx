@@ -59,6 +59,12 @@ const tabs = [
         slug: "courses",
         icon: GraduationCap,
     },
+    {
+        id: 9,
+        title: "References",
+        slug: "references",
+        icon: GraduationCap,
+    },
 ];
 
 

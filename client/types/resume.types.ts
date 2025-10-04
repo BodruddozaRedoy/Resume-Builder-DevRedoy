@@ -37,3 +37,11 @@ export type CourseItem = {
     endDate: string;
     courseTitle: string;
 };
+
+export interface ReferenceItem {
+    id:number;
+    referentName: string;
+    referentCompany: string;
+    referentEmail: string;
+    referentPhone:string
+}
