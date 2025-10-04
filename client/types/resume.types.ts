@@ -1,66 +1,56 @@
-export interface EmploymentItem {
-  id: number;
-  jobTitle: string;
-  company: string;
-  startDate: string;
-  endDate: string;
-  country: string;
-  companyLink: string;
-  description: string;
-}
+export type DateRange = {
+  start?: string; // "2022-01"
+  end?: string;   // "Present" | "2023-08"
+  location?: string;
+};
 
-export interface InternshipItem {
-  id: number;
+export type EmploymentItem = {
+  id: string;
   jobTitle: string;
   company: string;
-  startDate: string;
-  endDate: string;
-  country: string;
-  companyLink: string;
-  description: string;
-}
+  description?: string;
+} & DateRange;
 
 export type EducationItem = {
-  id: number;
+  id: string;
   degree: string;
   institute: string;
-  startDate: string;
-  endDate: string;
-  location: string;
-  description: string;
-};
+  description?: string;
+} & DateRange;
+
+export type InternshipItem = EmploymentItem;
 
 export type CourseItem = {
-  id: number;
-  institute: string;
-  startDate: string;
-  endDate: string;
-  courseTitle: string;
+  id: string;
+  title: string;
+  provider?: string;
+  year?: string;
 };
 
-export interface ReferenceItem {
-  id: number;
+export type ReferenceItem = {
+  id: string;
   referentName: string;
-  referentCompany: string;
-  referentEmail: string;
-  referentPhone: string;
-}
+  referentCompany?: string;
+  referentEmail?: string;
+  referentPhone?: string;
+};
 
-export interface LanguageItem {
-  id: number;
+export type LanguageItem = {
+  id: string;
   language: string;
-  proficiency?:
-    | "Novice (A1-A2)"
-    | "Proficient (B1-B2)"
-    | "Highly proficient (C1-C2)"
-    | "Native";
-}
+  proficiency?: "Novice (A1-A2)" | "Proficient (B1-B2)" | "Highly proficient (C1-C2)" | "Native";
+};
 
-export interface LinkItem {
-  id: number;
+export type HobbyItem = {
+  id: string;
+  hobby: string;
+};
+
+export type LinkItem = {
+  id: string;
   title: string;
   url: string;
-}
+};
 
 export type PersonalDetails = {
   name: string;
@@ -74,11 +64,6 @@ export type ContactInformation = {
   linkedin?: string;
   github?: string;
   website?: string;
-};
-
-export type HobbyItem = {
-  id: string;
-  hobby: string;
 };
 
 export type ResumeData = {

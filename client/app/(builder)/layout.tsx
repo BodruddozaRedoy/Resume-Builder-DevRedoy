@@ -1,5 +1,6 @@
 "use client"
 import LoadingScreen from '@/components/common/LoadingScreen'
+import AutoSaver from '@/components/modules/Builder/AutoSaver'
 import BuilderNavbar from '@/components/modules/Builder/BuilderNavbar'
 import LeftSideBar from '@/components/modules/Builder/LeftSidebar/LeftSideBar'
 import RightSidebar from '@/components/modules/Builder/RighSidebar/RightSidebar'
@@ -11,6 +12,7 @@ export default function BuilderLayout({ children }: { children: React.ReactNode 
     if(!hasHydrated) return <LoadingScreen/>
     return (
         <div className='flex h-screen w-full flex-col overflow-hidden'>
+            <AutoSaver/>
             <nav className='shrink-0 p-5 shadow-lg'>
                 <BuilderNavbar />
             </nav>
